@@ -46,7 +46,7 @@
 <!-- Menú -->
 <ul
   id="mobile-menu"
-  class="fixed top-0 right-0 h-full w-2/3 max-w-xs bg-[#fff6e7] p-6 space-y-4 transform translate-x-full transition-transform duration-300 z-40 md:hidden md:translate-x-0 md:gap-6 md:items-center md:space-y-0 md:p-0"
+  class="fixed top-0 invisible right-0 h-full w-2/3 max-w-xs bg-[#fff6e7] p-6 space-y-4 transform translate-x-full transition-transform duration-300 z-40 md:hidden md:translate-x-0 md:gap-6 md:items-center md:space-y-0 md:p-0"
 >
   <li><a href="">MIS XV</a></li>
   <li><a href="">CUENTA REGRESIVA</a></li>
@@ -63,11 +63,13 @@
     const toggle = document.getElementById("menu-toggle");
     const menu = document.getElementById("mobile-menu")!;
     const blurContainer = document.getElementById("blur-container")!;
-    const overlay = document.getElementById("overlay");
+    const overlay = document.getElementById("overlay")!;
 
     if (!toggle || !menu || !blurContainer || !overlay) return;
 
     const bars = toggle.querySelectorAll("span");
+
+     menu.classList.remove("invisible");
 
     function closeMenu() {
       menu.classList.add("translate-x-full");
