@@ -41,7 +41,7 @@
 <!-- Overlay SOLO en móvil -->
 <div
   id="overlay"
-  class="fixed inset-0 hidden z-30 md:hidden cursor-default"
+  class="fixed inset-0 hidden z-30 md:hidden cursor-default transition-all duration-300 opacity-0 pointer-events-none"
   style="background-color: transparent;"
 >
 </div>
@@ -92,8 +92,22 @@
         closeMenu();
       } else {
         menu.classList.remove("translate-x-full");
-        blurContainer.classList.add("blur-sm");
-        overlay.classList.remove("hidden");
+
+        // Aplica transición suave al blur
+        blurContainer.classList.add(
+          "transition-all",
+          "duration-300",
+          "blur-sm"
+        );
+
+        // Muestra el overlay con animación
+        overlay.classList.remove("hidden", "opacity-0", "pointer-events-none");
+        overlay.classList.add(
+          "opacity-100",
+          "pointer-events-auto",
+          "transition-all",
+          "duration-300"
+        );
 
         bars[0].classList.add("rotate-45");
         bars[1].classList.add("opacity-0");
