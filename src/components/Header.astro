@@ -61,8 +61,8 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const toggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("mobile-menu");
-    const blurContainer = document.getElementById("blur-container");
+    const menu = document.getElementById("mobile-menu")!;
+    const blurContainer = document.getElementById("blur-container")!;
     const overlay = document.getElementById("overlay");
 
     if (!toggle || !menu || !blurContainer || !overlay) return;
