@@ -10,14 +10,17 @@
   <!-- Botón hamburguesa SOLO en móvil -->
   <button
     id="menu-toggle"
-    class="z-50 flex flex-col justify-between w-6 h-5 md:hidden"
+    class="z-50 flex flex-col justify-between w-8 h-6 md:hidden"
     aria-label="Toggle Menu"
   >
-    <span class="block h-0.5 bg-black transition-all duration-300 origin-left"
+    <span
+      class="block h-[3px] bg-black w-full rounded transition-all duration-300 origin-left"
     ></span>
-    <span class="block h-0.5 bg-black transition-all duration-300 origin-left"
+    <span
+      class="block h-[3px] bg-black w-full rounded transition-all duration-300 origin-left"
     ></span>
-    <span class="block h-0.5 bg-black transition-all duration-300 origin-left"
+    <span
+      class="block h-[3px] bg-black w-full rounded transition-all duration-300 origin-left"
     ></span>
   </button>
   <!-- Menú escritorio -->
@@ -69,7 +72,7 @@
 
     const bars = toggle.querySelectorAll("span");
 
-     menu.classList.remove("invisible");
+    menu.classList.remove("invisible");
 
     function closeMenu() {
       menu.classList.add("translate-x-full");
