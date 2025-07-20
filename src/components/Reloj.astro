@@ -1,3 +1,146 @@
-<div class="bg-[#d6aabc] min-h-max" >
-<p>hola</p>
+<div
+  class="bg-[#d6aabc] min-h-max relative bottom-56 h-96 md:bottom-2.5 flex flex-col text-white font-mono px-4 md:h-[700px]"
+>
+  <div
+    id="countdown"
+    class="text-center pt-2.5 md:pt-5 animate-slide-in-bottom text-pink-900 font-mono"
+  >
+    <div class="flex justify-center items-center gap-4 text-xl md:text-2xl">
+      <div class="flex flex-col items-center">
+        <span id="days" class="text-3xl md:text-8xl">00</span>
+        <span class="uppercase text-[9px] md:text-4xl tracking-widest mt-1">
+          Días
+        </span>
+      </div>
+      <span class="text-2xl">:</span>
+      <div class="flex flex-col items-center">
+        <span id="hours" class="text-3xl md:text-8xl">00</span>
+        <span class="uppercase text-[9px] md:text-4xl tracking-widest mt-1">
+          Horas
+        </span>
+      </div>
+      <span class="text-2xl">:</span>
+      <div class="flex flex-col items-center">
+        <span id="minutes" class="text-3xl md:text-8xl">00</span>
+        <span class="uppercase text-[9px] md:text-4xl tracking-widest mt-1">
+          Minutos
+        </span>
+      </div>
+      <span class="text-2xl">:</span>
+      <div class="flex flex-col items-center">
+        <span id="seconds" class="text-3xl md:text-8xl">00</span>
+        <span class="uppercase text-[9px] md:text-4xl tracking-widest mt-1">
+          Segundos
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <section
+    class="animate-slide-in-bottom flex flex-col items-center pt-8 text-pink-900 md:pt-16"
+  >
+    <span class="text-4xl">Escucha mi canción</span>
+    <img
+      id="play-button"
+      src="./playbutton.svg"
+      alt="Reproducir canción"
+      class="w-12 h-12 pt-2.5 cursor-pointer md:size-40 md:pt-5"
+    />
+
+    <!-- Audio oculto -->
+    <audio id="audio-player" src="./mi-cancion.mp3" preload="auto"></audio>
+  </section>
+  <section
+    class="flex flex-row md:flex-row items-center pt-8 text-pink-900 gap-4 md:gap-16 px-0.5"
+  >
+    <!-- Texto izquierda -->
+    <div
+      class="flex flex-col text-center md:text-left space-y-4 md:w-1/2 text-whit animate-slide-in-left"
+    >
+      <span
+        class="bg-opacity-30 rounded-md p-0.5 md:p-4 block w-36 text-xs md:text-base mb-0"
+      >
+        Mi vida ha sido como un ​libro, cada año es un ​capítulo, que con
+        ​esfuerzo y dedicación he ​escrito.
+      </span>
+      <span
+        class="bg-opacity-30 rounded-md p-0.5 md:p-4 block w-36 text-xs md:text-base mb-0"
+      >
+        Al caer la noche en el ​cielo millones de ​estrellas podré contar, ​cada
+        una de ellas es un ​deseo que en mi corazón ​voy a guardar.
+      </span>
+      <span
+        class="bg-opacity-30 rounded-md p-0.5 md:p-4 block w-36 mb-4 text-xs md:text-base"
+      >
+        El día de hoy concluyó ​una etapa de mi vida y ​comienzo un nuevo
+        ​camino como mujer.
+      </span>
+    </div>
+
+    <!-- Imagen derecha -->
+    <div
+      class="md:w-1/2 flex justify-center md:justify-end animate-fade-in-exaggerated"
+    >
+      <img src="./hierba.png" alt="" class="fixed -top-12" />
+
+      <img
+        src="./reloj.webp"
+        alt="Reloj"
+        class="rounded-lg shadow-lg max-w-full h-aut bg-white bg-opacity-30 p-2 md:p-4 pb-5 z-10"
+      />
+    </div>
+  </section>
 </div>
+
+<script>
+  const targetDate = new Date("December 31, 2025 23:59:59").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff < 0) {
+      document.getElementById("countdown").innerHTML =
+        "<div style='font-size: 1.5rem;'>¡Tiempo cumplido!</div>";
+      clearInterval(interval);
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(
+      2,
+      "0"
+    );
+    document.getElementById("minutes").textContent = String(minutes).padStart(
+      2,
+      "0"
+    );
+    document.getElementById("seconds").textContent = String(seconds).padStart(
+      2,
+      "0"
+    );
+  }
+
+  updateCountdown();
+  const interval = setInterval(updateCountdown, 1000);
+
+  const playButton = document.getElementById("play-button") as HTMLElement;
+  const audioPlayer = document.getElementById(
+    "audio-player"
+  ) as HTMLAudioElement;
+
+  playButton.addEventListener("click", () => {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+      playButton.style.opacity = "0.7";
+    } else {
+      audioPlayer.pause();
+      playButton.style.opacity = "1";
+    }
+  });
+</script>

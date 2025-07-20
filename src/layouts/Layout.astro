@@ -18,7 +18,9 @@ import "../styles/global.css";
 <style is:global>
   html {
     font-family:
-      system-ui,
+      "Times New Roman",
+      Times,
+      serif system-ui,
       -apple-system,
       BlinkMacSystemFont,
       "Segoe UI",
@@ -29,5 +31,76 @@ import "../styles/global.css";
       "Open Sans",
       "Helvetica Neue",
       sans-serif;
+  }
+  @keyframes slide-in-bottom-exaggerated {
+    0% {
+      transform: translateY(400%);
+      opacity: 0;
+    }
+    80% {
+      transform: translateY(-10%);
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-left-exaggerated {
+    0% {
+      transform: translateX(-550%);
+      opacity: 0;
+    }
+    80% {
+      transform: translateX(10%);
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-right-exaggerated {
+    0% {
+      transform: translateX(550%);
+      opacity: 0;
+    }
+    80% {
+      transform: translateX(-10%);
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in-bottom {
+    animation: slide-in-bottom-exaggerated 1s ease-out both;
+    animation-delay: 0.3s;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left-exaggerated 1.3s ease-out both;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right-exaggerated 1.3s ease-out both;
+  }
+
+  @keyframes fade-in-exaggerated {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fade-in-exaggerated {
+    animation: fade-in-exaggerated 2s ease forwards;
+    animation-delay: 0.3s;
   }
 </style>
