@@ -1,4 +1,4 @@
-<div class="w-full h-[1114px] bg-[#fff6e7] relative overflow-hidden">
+<div class="w-full md:h-[1114px] bg-[#fff6e7] relative overflow-hidden">
   <img
     src="./Hero.webp"
     alt="Hero Image"
@@ -8,6 +8,7 @@
     class="absolute md:bottom-0 left-1/2 transform -translate-x-1/2 text-center text-black pb-8 flex flex-col gap-1 top-80 pt-20 md:pt-0 md:top-auto"
   >
     <p
+      class="animate-slide-in-bottom animate-duration-700 animate-ease-in-out"
       style="
     line-height: 1.12431074em;
     text-align: center;
@@ -20,14 +21,80 @@
     margin: 0;
   "
     >
-      <span style="color: rgb(255, 255, 255);"
-        class="text-3xl whitespace-nowrap md:text-9xl animate-slide-in-bottom">Maria Fernanda</span>
+      <span
+        style="color: rgb(255, 255, 255);"
+        class="text-3xl whitespace-nowrap md:text-9xl">Maria Fernanda</span
+      >
     </p>
 
     <div class="flex items-center text-red-900 font-bold md:text-7xl">
-      <div class="flex-grow border-t-2 border-white"></div>
-      <p class="mx-4 text-1xl md:text-7xl">Mis XV años</p>
-      <div class="flex-grow border-t-2 border-white"></div>
+      <div class="flex-grow border-t-2 border-white animate-slide-in-left">
+      </div>
+      <p
+        class="mx-4 text-1xl md:text-7xl animate-slide-in-bottom animate-ease-in-out"
+      >
+        Mis XV años
+      </p>
+      <div class="flex-grow border-t-2 border-white animate-slide-in-right">
+      </div>
     </div>
   </div>
 </div>
+
+<style>
+      @keyframes slide-in-bottom-exaggerated {
+    0% {
+      transform: translateY(400%);
+      opacity: 0;
+    }
+    80% {
+      transform: translateY(-10%);
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-left-exaggerated {
+    0% {
+      transform: translateX(-550%);
+      opacity: 0;
+    }
+    80% {
+      transform: translateX(10%);
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-right-exaggerated {
+    0% {
+      transform: translateX(550%);
+      opacity: 0;
+    }
+    80% {
+      transform: translateX(-10%);
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in-bottom {
+    animation: slide-in-bottom-exaggerated 1s ease-out both ;
+    animation-delay: 0.3s;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left-exaggerated 1.3s ease-out both;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right-exaggerated 1.3s ease-out both;
+  }
+
+</style>
